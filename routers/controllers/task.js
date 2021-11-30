@@ -6,7 +6,7 @@ const newtask = (req, res) => {
 
   const newtask = new taskmodel({
     name,
-    user:req.token.id,
+    user: req.token.id,
   });
   newtask
     .save()
@@ -19,8 +19,8 @@ const newtask = (req, res) => {
 };
 // gettasks النتائج التي تم تسجيلها في
 const gettasks = (req, res) => {
-    taskmodel
-    .find({user:req.token.id})
+  taskmodel
+    .find({ user: req.token.id })
     .then((result) => {
       res.json(result);
     })
@@ -29,17 +29,16 @@ const gettasks = (req, res) => {
     });
 };
 
-
 const delettasks = (req, res) => {
-    const { _id } = req.params;
-    taskmodel
-    .findByIdAndDelete(_id,{$set:{isDelete:true}},)
+  const { _id } = req.params;
+  taskmodel
+    .findByIdAndDelete(_id, { $set: { isDelete: true } })
     .then((result) => {
-        if (result) {
-            res.status(200).json("delettask");
-          } else {
-            res.status(404).json("user undefind");
-          }
+      if (result) {
+        res.status(200).json("delettask");
+      } else {
+        res.status(404).json("user undefind");
+      }
     })
     .catch((err) => {
       res.json(err);
@@ -47,9 +46,9 @@ const delettasks = (req, res) => {
 };
 
 const updetatasks = (req, res) => {
-    const {name} =req.body;
-    const { _id } = req.params;
-    taskmodel
+  const { name } = req.body;
+  const { _id } = req.params;
+  taskmodel
     .findByIdAndUpdate(_id, { $set: { name: name } })
     .then((result) => {
       res.json(result);
@@ -59,6 +58,5 @@ const updetatasks = (req, res) => {
     });
 };
 
-
 // عمل اكسبورت لارسالها الى الروتز
-module.exports = { newtask, gettasks,delettasks,updetatasks };
+module.exports = { newtask, gettasks, delettasks, updetatasks };

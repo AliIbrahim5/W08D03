@@ -74,17 +74,16 @@ const login = (req, res) => {
 
   usermodel
     .findOne({ email: savedEmail })
-  
+
     .then(async (result) => {
       if (result) {
         if (result.email == email) {
-            
           const savedPassword = await bcrypt.compare(password, result.password);
           const payload = {
             role: result.role,
-            id: result._id,   
+            id: result._id,
           };
-          
+
           if (savedPassword) {
             let token = jwt.sign(payload, secret);
             res.status(200).json({ result, token });
@@ -104,7 +103,7 @@ const login = (req, res) => {
 };
 
 const getalluser = (req, res) => {
-    usermodel
+  usermodel
     .find({})
     .then((result) => {
       res.json(result);
@@ -114,9 +113,9 @@ const getalluser = (req, res) => {
     });
 };
 const deletuser = (req, res) => {
-    const { _id } = req.params;
-    taskmodel
-    .findByIdAndDelete({_id})
+  const { _id } = req.params;
+  taskmodel
+    .findByIdAndDelete({ _id })
     .then((result) => {
       res.json(result);
     })
@@ -125,4 +124,4 @@ const deletuser = (req, res) => {
     });
 };
 // اكسبورت لتسجيل والدخول
-module.exports = { resgister, login,getalluser,deletuser };
+module.exports = { resgister, login, getalluser, deletuser };
