@@ -1,5 +1,5 @@
 // ريكواير لمجلد ارول في الموديولز
-const taskmodel = require("../../db/models/role");
+const taskmodel = require("../../db/models/task");
 // عمل نيو موديول لاخذها من البوست مان عن طريق البدي
 const newrolr = (req, res) => {
   const { name, task,isDelete } = req.body;
