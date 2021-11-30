@@ -1,4 +1,24 @@
 # W08D03
+## Folder work
+1- The ability to create a special task for each user and modify it,
+
+
+2-Delete the account and the task,
+
+
+3-Display the tags,
+
+
+4- Passcode encryption,
+
+
+5- Giving the authority,
+
+
+6- The property of passing admin owners,
+
+
+7- Add a new skyma, the name of your task,
 
 
 ## The packages used
