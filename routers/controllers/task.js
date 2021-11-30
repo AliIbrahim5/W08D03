@@ -29,5 +29,18 @@ const gettasks = (req, res) => {
       res.json(err);
     });
 };
+
+
+const delettasks = (req, res) => {
+    const { _id } = req.params;
+    taskmodel
+    .findByIdAndDelete({_id})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
 // عمل اكسبورت لارسالها الى الروتز
-module.exports = { newtask, gettasks };
+module.exports = { newtask, gettasks,delettasks };
