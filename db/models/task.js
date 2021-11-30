@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // سكيما للرول فيها الرول والبراميشن
 const task = new mongoose.Schema({
   name: { type: String },
-  isDelete: {type: String,require: true},
+  isDelete: {type: String,default: false},
   task: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 
   

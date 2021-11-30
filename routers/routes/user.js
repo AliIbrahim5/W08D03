@@ -4,13 +4,18 @@ const express = require("express");
 const userRoute = express.Router();
 
 // امتداد الكنترول يوزر
-const { resgister, login,getalluser } = require("./../controllers/user");
-// const authentication = require("./../controllers/authentication");
+const { resgister, login,getalluser,deletuser } = require("./../controllers/user");
+const authentication = require("./../middleware/authentication");
+const authorization = require("./../middleware/authorization");
 
 // باث التسجيل
 userRoute.post("/resgister", resgister);
 // باث الدخول
-userRoute.post("/login", login,);
+userRoute.post("/login",login);
+
+// يعرض جميع اليوزرات 
+userRoute.get("/allusers",authentication,authorization, getalluser);
+// يحذف اليوزر عبر الايدي
+userRoute.delete("/userdelet/:_id",authentication,authorization, deletuser);
 // عمل اكسبورت لليوزر روتر
-userRoute.get("/allusers", getalluser);
 module.exports = userRoute;

@@ -4,8 +4,11 @@ const express = require("express");
 const roleRouter = express.Router();
 // استدعاء مابداخل الكنترول  من انشاء وعرض
 const { newrolr, getrole } = require("../controllers/role");
+
+const authentication = require("./../middleware/authentication");
+const authorization = require("./../middleware/authorization");
 // الباثات التي تستخدمها في البسوت مان للعرض والانشاء
-roleRouter.post("/role", newrolr);
-roleRouter.get("/read", getrole);
+roleRouter.post("/role",authentication,authorization, newrolr);
+roleRouter.get("/read",authentication,authorization, getrole);
 // عمل اكسبورت roleRouter
 module.exports = roleRouter;

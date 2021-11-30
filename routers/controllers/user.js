@@ -112,5 +112,16 @@ const getalluser = (req, res) => {
       res.json(err);
     });
 };
+const deletuser = (req, res) => {
+    const { _id } = req.params;
+    taskmodel
+    .findByIdAndDelete({_id})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
 // اكسبورت لتسجيل والدخول
-module.exports = { resgister, login,getalluser };
+module.exports = { resgister, login,getalluser,deletuser };
