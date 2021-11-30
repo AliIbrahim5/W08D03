@@ -74,13 +74,16 @@ const login = (req, res) => {
 
   usermodel
     .findOne({ email: savedEmail })
+  
     .then(async (result) => {
       if (result) {
         if (result.email == email) {
+            
           const savedPassword = await bcrypt.compare(password, result.password);
           const payload = {
-            email,
+            email,   
           };
+          
           if (savedPassword) {
             let token = jwt.sign(payload, secret);
             res.status(200).json({ result, token });

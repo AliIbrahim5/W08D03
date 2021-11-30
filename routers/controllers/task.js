@@ -42,5 +42,20 @@ const delettasks = (req, res) => {
       res.json(err);
     });
 };
+
+const updetatasks = (req, res) => {
+    const {name} =req.body;
+    const { _id } = req.params;
+    taskmodel
+    .findByIdAndUpdate(_id, { $set: { name: name } })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
+
 // عمل اكسبورت لارسالها الى الروتز
-module.exports = { newtask, gettasks,delettasks };
+module.exports = { newtask, gettasks,delettasks,updetatasks };
