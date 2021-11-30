@@ -17,11 +17,15 @@ app.use(express.json());
 const roleRouter = require("./routers/routes/role");
 // استدعاء من مجلد الروترز ومن ثم مجلد اليورز
 const userRoute = require("./routers/routes/user");
+// استدعاء من مجلد الروترز ومن ثم مجلد اليورز
+const taskRouter = require("./routers/routes/task");
 
 // لتشغيله في مجلد الاندكس
 app.use(roleRouter);
 // لتشغيلة في مجلد الاندكس
 app.use(userRoute);
+// لتشغيلة في مجلد الاندكس
+app.use(taskRouter);
 // استدعاء البورت من .env عن طيق process.env.PORT
 const PORT = process.env.PORT || 5000;
 app.use(cors());
