@@ -101,5 +101,16 @@ const login = (req, res) => {
       res.send(err);
     });
 };
+
+const getalluser = (req, res) => {
+    usermodel
+    .find({})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
 // اكسبورت لتسجيل والدخول
-module.exports = { resgister, login };
+module.exports = { resgister, login,getalluser };
