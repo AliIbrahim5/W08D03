@@ -9,7 +9,7 @@ const salt = Number(process.env.SALT);
 // تابع jwt
 const secret = process.env.SECRET;
 // كنترول اليوزر لتسجيل
-const resgister = async (req, res, next) => {
+const resgister = async (req, res) => {
   const { email, password, role } = req.body;
 
   const savedEmail = email.toLowerCase();
@@ -81,7 +81,8 @@ const login = (req, res) => {
             
           const savedPassword = await bcrypt.compare(password, result.password);
           const payload = {
-            email,   
+            role: result.role,
+            id: result._id,   
           };
           
           if (savedPassword) {

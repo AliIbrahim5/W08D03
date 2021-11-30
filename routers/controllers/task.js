@@ -2,12 +2,11 @@
 const taskmodel = require("../../db/models/task");
 // عمل نيو موديول لاخذها من البوست مان عن طريق البدي
 const newtask = (req, res) => {
-  const { name, task,isDelete } = req.body;
+  const { name, task } = req.body;
 
   const newtask = new taskmodel({
     name,
-    task,
-    isDelete,
+    user:req.token.id,
   });
   newtask
     .save()
@@ -21,7 +20,7 @@ const newtask = (req, res) => {
 // gettasks النتائج التي تم تسجيلها في
 const gettasks = (req, res) => {
     taskmodel
-    .find({})
+    .find({user:req.token.id})
     .then((result) => {
       res.json(result);
     })
@@ -34,9 +33,13 @@ const gettasks = (req, res) => {
 const delettasks = (req, res) => {
     const { _id } = req.params;
     taskmodel
-    .findByIdAndDelete({_id})
+    .findByIdAndDelete(_id,{$set:{isDelete:true}},)
     .then((result) => {
-      res.json(result);
+        if (result) {
+            res.status(200).json("delettask");
+          } else {
+            res.status(404).json("user undefind");
+          }
     })
     .catch((err) => {
       res.json(err);

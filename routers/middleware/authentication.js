@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
- const secret = process.env.SECRET;
+const SECRET = process.env.SECRET;
 
 const authentication = (req, res, next) => {
   try {
@@ -9,7 +9,7 @@ const authentication = (req, res, next) => {
       return res.status(403).json({ message: "forbidden" });
     }
     const token = req.headers.authorization.split(" ")[1];
-    const parsedToken = jwt.verify(token, secret);
+    const parsedToken = jwt.verify(token, SECRET);
     req.token = parsedToken;
     next();
   } catch (err) {
@@ -18,4 +18,3 @@ const authentication = (req, res, next) => {
 };
 
 module.exports = authentication;
-

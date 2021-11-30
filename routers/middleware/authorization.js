@@ -1,20 +1,17 @@
-const rolemodel =require("../../db/models/role");
+const roleModel = require("../../db/models/role");
 
-const authorization = async(req, res, next) =>{
+const authorization = async(req, res, next) => {
     try {
-        const roleId = req.token.role;
-        const result = await rolemodel.findById(roleId);
-        console.log();
-        if(result.role == "admin"){
+        const roleID = req.token.role;
+        const result = await roleModel.findById(roleID);
+        if(result.role === "admin"){
             next();
         }else{
             res.status(403).json("forbidden")
         }
-        
-    } catch (error) {
-
-        res.status(403).json(error)
+    } catch (err) {
+        res.status(403).json(err);
     }
-}
+};
 
 module.exports = authorization;
