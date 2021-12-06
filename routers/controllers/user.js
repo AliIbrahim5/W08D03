@@ -71,7 +71,7 @@ const resgister = async (req, res) => {
 const login = (req, res) => {
   const { email, password } = req.body;
   const savedEmail = email.toLowerCase();
-
+  
   usermodel
     .findOne({ email: savedEmail })
 

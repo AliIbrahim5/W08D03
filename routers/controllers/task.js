@@ -46,15 +46,26 @@ const delettasks = (req, res) => {
 };
 
 const updetatasks = (req, res) => {
+  const { id } = req.params;
   const { name } = req.body;
-  const { _id } = req.params;
+
   taskmodel
-    .findByIdAndUpdate(_id, { $set: { name: name } })
+    .findOneAndUpdate(
+      { _id: id, creator: req.token.id, deleted: false },
+      { name: name },
+      { new: true }
+    )
     .then((result) => {
-      res.json(result);
+      if (result) {
+        res.status(200).json(result);
+      } else {
+        res
+          .status(404)
+          .json({ message: `There is no todo with this ID: ${id}` });
+      }
     })
     .catch((err) => {
-      res.json(err);
+      res.status(400).json(err);
     });
 };
 

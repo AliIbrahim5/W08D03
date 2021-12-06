@@ -9,6 +9,6 @@ const authentication = require("./../middleware/authentication");
 const authorization = require("./../middleware/authorization");
 // الباثات التي تستخدمها في البسوت مان للعرض والانشاء
 roleRouter.post("/role", authentication, authorization, newrolr);
-roleRouter.get("/read", authentication, authorization, getrole);
+roleRouter.get("/read",  getrole);
 // عمل اكسبورت roleRouter
 module.exports = roleRouter;

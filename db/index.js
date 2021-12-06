@@ -11,8 +11,7 @@ const options = {
   useUnifiedTopology: true,
 };
 // التأكد من ان الداتا بيس شغاله
-mongoose.connect(DB, options).then(
-  () => {
+mongoose.connect(DB, options).then(() => {
     console.log("DB Ready To Use");
   },
   (err) => {

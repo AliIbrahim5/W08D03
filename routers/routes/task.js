@@ -15,6 +15,6 @@ const authorization = require("./../middleware/authorization");
 taskRouter.post("/task", authentication, newtask);
 taskRouter.get("/tasks", authentication, gettasks);
 taskRouter.delete("/taskdelet/:_id", authentication, delettasks);
-taskRouter.put("/tasksupdeta/:_id", authentication, authorization, updetatasks);
+taskRouter.put("/tasksupdeta/:1d", authentication, updetatasks);
 // عمل اكسبورت taskRouter
 module.exports = taskRouter;
