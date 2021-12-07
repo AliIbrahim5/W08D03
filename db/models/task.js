@@ -7,4 +7,4 @@ const task = new mongoose.Schema({
   user: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 //   اكسبورت للرول
-module.exports = mongoose.model("Task", task);
+module.exports = mongoose.model("Taskss", task);

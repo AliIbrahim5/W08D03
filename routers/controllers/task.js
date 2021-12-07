@@ -44,30 +44,46 @@ const delettasks = (req, res) => {
       res.json(err);
     });
 };
-
 const updetatasks = (req, res) => {
-  const { id } = req.params;
   const { name } = req.body;
-
+  const { _id } = req.params;
   taskmodel
-    .findOneAndUpdate(
-      { _id: id, creator: req.token.id, deleted: false },
-      { name: name },
-      { new: true }
-    )
+    .findByIdAndUpdate(_id, { $set: { name: name } },{new:true})
     .then((result) => {
       if (result) {
-        res.status(200).json(result);
+        res.status(200).json("task is updated");
       } else {
-        res
-          .status(404)
-          .json({ message: `There is no todo with this ID: ${id}` });
+        res.status(404).json("task has not been found");
       }
     })
     .catch((err) => {
       res.status(400).json(err);
     });
 };
+
+// const updetatasks = (req, res) => {
+//   const { _id } = req.params;
+//   const { name } = req.body;
+//   taskmodel
+//     .findByIdAndUpdate(
+//        _id,
+//       { name: name },
+//       // $set: { name: true }
+//       { new: true }
+//     )
+//     .then((result) => {
+//       if (result) {
+//         res.status(200).json(result);
+//       } else {
+//         res
+//           .status(404)
+//           .json('error');
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(400).json(err);
+//     });
+// };
 
 // عمل اكسبورت لارسالها الى الروتز
 module.exports = { newtask, gettasks, delettasks, updetatasks };
