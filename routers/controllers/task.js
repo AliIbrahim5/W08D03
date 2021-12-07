@@ -47,6 +47,7 @@ const delettasks = (req, res) => {
 const updetatasks = (req, res) => {
   const { name } = req.body;
   const { _id } = req.params;
+  console.log(_id)
   taskmodel
     .findByIdAndUpdate(_id, { $set: { name: name } },{new:true})
     .then((result) => {
