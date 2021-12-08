@@ -10,7 +10,7 @@
 1- The ability to create a special task for each user and modify it,
 
 2-Delete the account and the task,
-
+c
 3-Display the tags,
 
 4- Passcode encryption,
