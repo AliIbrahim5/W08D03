@@ -5,6 +5,11 @@
 
 ## ER diagram
 <img src='https://github.com/AliIbrahim5/W08D03/blob/main/img/Untitled%20Diagram-Page-1.drawio.png?raw=true' alt='ERdiagram'/>
+
+
+## UML diagram
+![Untitled Diagram-Page-4 drawio 222](https://user-images.githubusercontent.com/92247967/145343486-c29cb4eb-736e-4093-95db-a82967bf6a8f.png)
+
 ## Folder work
 
 1- The ability to create a special task for each user and modify it,
