@@ -4,7 +4,7 @@
 
 
 ## ER diagram
-<img src='https://files.slack.com/files-pri/T02FM3FE1DJ-F02Q3BSM8N8/untitled_diagram-page-1.drawio.png' alt='ERdiagram'/>
+<img src='https:filesslackcomfiles-priT02FM3FE1DJ-F02Q3BSM8N8untitled_diagram-page-1.drawio.png' alt='ERdiagram'/>
 ## Folder work
 
 1- The ability to create a special task for each user and modify it,
